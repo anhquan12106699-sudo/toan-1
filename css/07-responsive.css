@@ -1,0 +1,148 @@
+  /* ============ RESPONSIVE ============ */
+  @media (max-width:1024px){
+    .split, .hero-grid, .uniform-wrap{grid-template-columns:1fr;}
+    .split .split-media, .split.reverse .split-media{order:-1;}
+    .hero{padding:76px 0 90px;}
+    .cards-grid{grid-template-columns:repeat(2,1fr);}
+    .admit-grid{grid-template-columns:repeat(1,1fr);}
+    .foot-grid{grid-template-columns:1fr 1fr;}
+    .id-logo-showcase{grid-template-columns:repeat(2,1fr);}
+  }
+
+  /* Lớp phủ mờ khi menu burger mở — bấm vào để đóng menu */
+  .nav-backdrop{
+    position:fixed;
+    inset:0;
+    z-index:90;
+    background:rgba(1,37,26,.35);
+    backdrop-filter:blur(2px);
+    -webkit-backdrop-filter:blur(2px);
+    border:none;
+    padding:0;
+    margin:0;
+    cursor:pointer;
+    opacity:0;
+    pointer-events:none;
+    transition:opacity .32s ease;
+  }
+  .nav-backdrop.is-visible{
+    opacity:1;
+    pointer-events:auto;
+  }
+  @media (min-width:1101px){
+    .nav-backdrop{display:none !important;}
+  }
+
+  /* Thanh menu (Giới thiệu, Lịch sử ngành...) co gọn vào nút burger sớm hơn,
+     vì phần logo giờ rộng hơn (2 logo + dải phân cách) nên dễ bị đè lên nhau
+     ở màn hình cỡ vừa (tablet/laptop nhỏ) nếu vẫn hiện thanh ngang. */
+  @media (max-width:1100px){
+    /* Menu trượt ngang từ mép trái màn hình (off-canvas drawer).
+       Mặc định nằm ẩn ngoài viewport bên trái; khi mở thì trượt vào,
+       bấm khoảng trống bên phải (nav-backdrop) sẽ rụt lại về bên trái. */
+    .navlinks{display:flex;position:fixed;top:0;left:0;bottom:0;
+      width:min(84vw, 320px);
+      background:var(--cream);flex-direction:column;align-items:stretch;
+      justify-content:flex-start;gap:0;
+      padding:calc(var(--mnav-header-h, 84px) + 14px) 16px 28px;
+      border:none;border-right:1px solid var(--line);border-radius:0;
+      box-shadow:14px 0 34px -16px rgba(0,0,0,.35);
+      overflow-x:hidden;
+      overflow-y:auto;
+      -webkit-overflow-scrolling:touch;
+      overscroll-behavior:contain;
+      max-height:none;height:100dvh;
+      mask-image:none;flex:none;
+      z-index:150;
+      transform:translateX(-100%);
+      transition:transform .32s cubic-bezier(.4,0,.2,1);
+      will-change:transform;
+      pointer-events:none;
+    }
+    .navlinks.open{transform:translateX(0);pointer-events:auto;}
+    .nav-arrow{display:none;}
+    .navlinks > a.nav-item,
+    .navlinks > .has-dropdown > .nav-parent{
+      padding:14px 10px 14px 14px;
+      text-align:left;
+      display:flex;align-items:center;gap:10px;
+      width:100%;
+      background:transparent;
+      border:0;
+      border-bottom:1px solid rgba(1,61,38,.09);
+      border-left:3px solid transparent;
+      border-radius:0;
+      box-shadow:none;
+      transform:none;
+      font-size:.97rem;
+      font-weight:700;
+      letter-spacing:.02em;
+      color:var(--green-darkest);
+    }
+    .navlinks > a.nav-item::before,
+    .navlinks > .has-dropdown > .nav-parent::before{ content:none; display:none; }
+    .navlinks > a.nav-item:hover,
+    .navlinks .has-dropdown:hover > .nav-parent,
+    .navlinks .has-dropdown.open > .nav-parent{
+      background:rgba(1,61,38,.035);
+      border-bottom-color:rgba(1,61,38,.09);
+      border-left-color:rgba(242,183,5,.5);
+      color:var(--green-deep);
+      box-shadow:none;
+      transform:none;
+    }
+    .navlinks > a.nav-item.active,
+    .navlinks .has-dropdown > .nav-parent.active{
+      background:linear-gradient(90deg,rgba(242,183,5,.14),rgba(242,183,5,0) 72%);
+      border-bottom-color:rgba(1,61,38,.09);
+      border-left-color:var(--gold);
+      color:var(--green-deep);
+      box-shadow:none;
+      transform:none;
+    }
+    /* Mục con: tối giản, thụt nhẹ, không nền */
+    .navlinks .dropdown a{
+      padding:11px 12px 11px 24px !important;
+      font-size:.9rem;
+      font-weight:600;
+      letter-spacing:.01em;
+      color:rgba(1,61,38,.72);
+      background:transparent;
+      border:0;
+      border-left:2px solid transparent;
+      border-bottom:1px solid rgba(1,61,38,.06);
+      border-radius:0;
+      width:100%;
+      justify-content:flex-start;
+      box-shadow:none;
+      transform:none !important;
+    }
+    .navlinks .dropdown a::before{display:none !important;content:none !important;}
+    .navlinks .dropdown a:hover{
+      background:rgba(1,61,38,.035);
+      border-color:transparent;
+      border-left-color:rgba(242,183,5,.5);
+      color:var(--green-deep);
+    }
+    .navlinks .dropdown a.active{
+      background:rgba(242,183,5,.1);
+      border-color:transparent;
+      border-left-color:var(--gold);
+      color:var(--green-deep);
+      font-weight:700;
+    }
+    .burger{display:flex;}
+    .nav-cta .btn span{display:none;}
+  }
+  @media (max-width:760px){
+    .sect{padding:64px 0;}
+    .cards-grid{grid-template-columns:1fr;}
+    .foot-grid{grid-template-columns:1fr;gap:30px;}
+    .hero-stats{gap:24px;}
+    .admit-banner{flex-direction:column;align-items:flex-start;}
+    .id-logo-showcase{grid-template-columns:1fr;max-width:420px;margin:0 auto;}
+    .id-logo-card{aspect-ratio:auto;padding:36px 24px;}
+    .id-logo-card img,
+    .id-logo-card svg{max-height:220px;}
+  }
+

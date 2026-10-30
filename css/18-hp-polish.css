@@ -1,0 +1,128 @@
+/* ============================================================
+   TINH CHỈNH GIAO DIỆN — NHÓM ƯU TIÊN 1
+   1) Tương phản hero   2) Nhịp chuyển động mở trang
+   3) Cỡ chữ nội dung   4) Nhịp khoảng cách
+   5) Phân cấp nút      6) Vùng chạm trên mobile
+   ============================================================ */
+
+/* ---------- 1. HERO TRANG CHỦ: lớp phủ nhẹ hơn, chữ vẫn rõ ---------- */
+#hero .hero-slider::after{
+  background:linear-gradient(90deg,rgba(1,61,38,.90) 0%,rgba(1,61,38,.76) 38%,rgba(1,61,38,.56) 68%,rgba(1,61,38,.44) 100%),
+             linear-gradient(0deg,rgba(1,61,38,.90) 0%,rgba(1,61,38,.32) 42%,transparent 66%);
+}
+#hero .hero-tag{text-shadow:0 1px 10px rgba(1,31,22,.45);}
+#hero .hero-subtitle{text-shadow:0 1px 18px rgba(1,31,22,.5);}
+#hero .hero-stats div strong{text-shadow:0 1px 12px rgba(1,31,22,.5);}
+#hero .hero-stats div span{color:rgba(255,255,255,.78);text-shadow:0 1px 10px rgba(1,31,22,.55);}
+
+/* ---------- 2. CHUYỂN ĐỘNG MỞ TRANG: ngắn hơn, bỏ hiệu ứng mờ ---------- */
+@keyframes hpTitleIn{0%{opacity:0;transform:translateY(22px)}100%{opacity:1;transform:none}}
+@keyframes tslTitleIn{0%{opacity:0;transform:translateY(24px)}100%{opacity:1;transform:none}}
+
+/* Trang chủ */
+#hero .hero-grid > div:first-child > .hero-tag{animation-duration:.5s;animation-delay:.04s;}
+#hero .hero-tag::before{animation-duration:.42s;animation-delay:.24s;}
+#hero .hero-grid > div:first-child > h1{animation-duration:.75s;animation-delay:.12s;}
+#hero .hero-grid > div:first-child > .hero-subtitle{animation-duration:.6s;animation-delay:.24s;}
+#hero .hero-grid > div:first-child > .hero-cta{animation-duration:.6s;animation-delay:.34s;}
+#hero .hero-grid > div:first-child > .hero-stats{animation-duration:.5s;animation-delay:.44s;}
+#hero .hero-stats div{animation-duration:.45s;}
+#hero .hero-stats div:nth-child(1){animation-delay:.52s;}
+#hero .hero-stats div:nth-child(2){animation-delay:.58s;}
+#hero .hero-slider::before{animation-duration:1.8s;animation-delay:.6s;}
+#hero .hero-actions .btn-primary::after{animation-delay:1.4s;}
+
+/* Trang Tuyển sinh */
+#tuyen-sinh .tsl-eyebrow{animation-duration:.6s;animation-delay:.06s;}
+#tuyen-sinh .tsl-eyebrow::before{animation-duration:.45s;animation-delay:.26s;}
+#tuyen-sinh .tsl-title{animation-duration:.75s;animation-delay:.14s;}
+#tuyen-sinh .tsl-lead{animation-duration:.6s;animation-delay:.28s;}
+#tuyen-sinh .tsl-actions{animation-duration:.6s;animation-delay:.38s;}
+#tuyen-sinh .tsl-fact{animation-duration:.5s;}
+#tuyen-sinh .tsl-fact:nth-child(1){animation-delay:.56s;}
+#tuyen-sinh .tsl-fact:nth-child(2){animation-delay:.62s;}
+#tuyen-sinh .tsl-fact:nth-child(3){animation-delay:.68s;}
+#tuyen-sinh .tsl-dock{animation-duration:.7s;animation-delay:.36s;}
+#tuyen-sinh .ts-year-btn{animation-duration:.45s;}
+#tuyen-sinh .ts-year-btn:nth-child(1){animation-delay:.5s;}
+#tuyen-sinh .ts-year-btn:nth-child(2){animation-delay:.56s;}
+#tuyen-sinh .ts-year-btn:nth-child(3){animation-delay:.62s;}
+#tuyen-sinh .tsl-hero::after{animation-duration:1.8s;animation-delay:.7s;}
+#tuyen-sinh .tsl-actions .ts-btn-gold::after{animation-delay:1.4s;}
+
+/* ---------- 3. CỠ CHỮ NỘI DUNG: 1rem, giãn dòng 1.7 ---------- */
+.hp-why-card p,
+.hx-card p,
+.hp-step p,
+.tsl-step p,
+.hp-major p,
+.tsl-major p,
+.hn-featured-body p,
+.ts-feat-body p{font-size:1rem;line-height:1.7;}
+.hp-major p{color:rgba(255,255,255,.86);}
+#tuyen-sinh .tsl-major p{color:rgba(255,255,255,.86);}
+.notice-body p{font-size:1rem;line-height:1.6;}
+.notice-list > .notice-card{height:132px;}
+
+/* ---------- 4. NHỊP KHOẢNG CÁCH ---------- */
+.hp-head{margin-bottom:40px;}
+.hp-explore .hp-head{margin-bottom:40px;}
+.hp-cta{padding:0 0 32px;}
+.hp-why{padding:64px 0 0;}
+.hp-majors{padding:64px 0 64px;}
+.home-news{padding:64px 0 0;}
+.hp-explore{padding:96px 0 96px;}
+#tuyen-sinh .tsl-band{padding:96px 0;}
+#tuyen-sinh .tsl-band-head{margin-bottom:40px;}
+
+/* ---------- 5. PHÂN CẤP NÚT + ĐỘ NỔI 3 MỨC ---------- */
+/* Mức 1: thẻ trắng */
+.hp-why-card,
+.hx-card{box-shadow:0 14px 34px -26px rgba(1,37,26,.45);}
+.hp-why-card:hover{box-shadow:0 24px 46px -30px rgba(1,37,26,.45);}
+.hx-card:hover{box-shadow:0 26px 48px -28px rgba(1,37,26,.6);}
+/* Mức 2: thẻ lớn nền xanh (đã đồng bộ sẵn) */
+/* Mức 3: khối CTA nổi trên nền trắng */
+.hp-cta-card{box-shadow:0 30px 60px -34px rgba(1,37,26,.55);}
+
+/* Nút phụ: chỉ viền/ghost, không cạnh tranh với CTA vàng duy nhất */
+.hero .hero-actions .btn-outline,
+.tsl-actions .ts-btn-ghost{box-shadow:none;background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.4);}
+
+/* ---------- 6. VÙNG CHẠM >= 44px ---------- */
+.burger{width:44px;height:44px;}
+#hero .hero-actions .btn,
+#tuyen-sinh .tsl-actions .ts-btn{min-height:44px;}
+#tuyen-sinh .ts-year-btn{min-height:44px;}
+/* chấm chuyển ảnh: vùng chạm 24x44, chấm thị giác 8px bên trong */
+.hero-slider-dots{gap:0;bottom:96px;padding:0;background:transparent;-webkit-backdrop-filter:none;backdrop-filter:none;}
+.hero-slider-dot{
+  position:relative;width:24px;height:44px;padding:0;border:0;background:transparent;
+  display:inline-flex;align-items:center;justify-content:center;transform:none;
+}
+.hero-slider-dot::before{
+  content:"";display:block;width:8px;height:8px;border-radius:999px;background:rgba(255,255,255,.45);box-shadow:0 1px 6px rgba(1,31,22,.55);
+  transition:width .3s var(--ease),background .3s var(--ease);
+}
+.hero-slider-dot.active{width:24px;background:transparent;transform:none;}
+.hero-slider-dot.active::before{width:20px;background:var(--gold);}
+.hero-slider-dot:hover::before{background:rgba(255,255,255,.65);}
+.hero-slider-dot.active:hover::before{background:var(--gold);}
+
+/* ---------- 7. MOBILE ---------- */
+@media (max-width:760px){
+  .hp-cta{padding:0 0 24px;}
+  .hp-why{padding:48px 0 0;}
+  .hp-majors{padding:48px 0 48px;}
+  .home-news{padding-top:48px;}
+  .hp-explore{padding:64px 0 64px;}
+  .hp-head,.hp-explore .hp-head{margin-bottom:32px;}
+  .hero-subtitle,.tsl-lead{font-size:1rem;line-height:1.7;}
+  .hero-slider-dots{bottom:64px;}
+  #tuyen-sinh .tsl-band{padding:64px 0;}
+  #tuyen-sinh .tsl-band-head{margin-bottom:32px;}
+}
+@media (max-width:560px){
+  .hp-explore{padding:48px 0 56px;}
+  .notice-list > .notice-card{height:auto;min-height:132px;}
+}

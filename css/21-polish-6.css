@@ -1,0 +1,196 @@
+  /* ============================================================
+     POLISH 6
+     1. Hero: dòng chuyên ngành trả lại chữ trắng.
+     2. Hover tiêu đề bài viết nhỏ: trả lại vàng.
+     3. Drawer mobile: tấm trượt ngay dưới header, danh sách phẳng.
+     ============================================================ */
+
+  /* --- 1. Hero: dòng chuyên ngành màu trắng --- */
+  .hero .hero-subtitle{ color:#fff; }
+
+  /* --- 2. Hover tiêu đề bài viết nhỏ: vàng --- */
+  .ts-feat-main:hover h4,
+  .ts-feat-item:hover h5,
+  .news-card:hover h3,
+  .hn-featured-main:hover h3,
+  .hn-featured-item:hover h4{ color:var(--gold); }
+
+  /* --- 3. Drawer mobile --- */
+  @media (max-width:1100px){
+
+    /* Tấm trượt bắt đầu ngay dưới header, nền trắng, viền phải mảnh */
+    .navlinks{
+      top:var(--mnav-header-h, 84px) !important;
+      bottom:auto !important;
+      height:calc(100dvh - var(--mnav-header-h, 84px)) !important;
+      padding:4px 14px 24px !important;
+      gap:0 !important;
+      background:#fff !important;
+      border-right:1px solid rgba(1,61,38,.12) !important;
+      border-radius:0 !important;
+      box-shadow:0 30px 60px -34px rgba(1,37,26,.45) !important;
+      scrollbar-width:thin;
+      scrollbar-color:rgba(1,61,38,.2) transparent;
+    }
+    .navlinks::-webkit-scrollbar{ width:6px; }
+    .navlinks::-webkit-scrollbar-thumb{ background:rgba(1,61,38,.18); border-radius:99px; }
+
+    .navlinks::before{
+      content:"Điều hướng";
+      display:block;
+      margin:16px 0 8px 14px;
+      font-family:var(--font-cond);
+      font-size:.66rem;
+      font-weight:700;
+      letter-spacing:.22em;
+      text-transform:uppercase;
+      color:rgba(1,61,38,.4);
+    }
+
+    /* Mục cấp 1: một hàng phẳng, phân cách bằng đường kẻ mảnh */
+    .navlinks > a.nav-item,
+    .navlinks > .has-dropdown > .nav-parent{
+      display:flex;
+      align-items:center;
+      justify-content:flex-start;
+      gap:10px;
+      width:100%;
+      min-height:52px;
+      padding:0 12px 0 14px !important;
+      background:transparent !important;
+      border:0 !important;
+      border-left:3px solid transparent !important;
+      border-bottom:1px solid rgba(1,61,38,.08) !important;
+      border-radius:0 !important;
+      box-shadow:none !important;
+      transform:none !important;
+      font-size:.95rem !important;
+      font-weight:600 !important;
+      letter-spacing:.005em !important;
+      color:var(--green-darkest) !important;
+    }
+    .navlinks > a.nav-item::before,
+    .navlinks > .has-dropdown > .nav-parent::before{ content:none !important; display:none !important; }
+
+    .navlinks > a.nav-item:hover,
+    .navlinks .has-dropdown:hover > .nav-parent,
+    .navlinks .has-dropdown.open > .nav-parent{
+      background:rgba(1,61,38,.03) !important;
+      border-left-color:rgba(242,183,5,.5) !important;
+      border-bottom-color:rgba(1,61,38,.08) !important;
+      color:var(--green-deep) !important;
+      box-shadow:none !important;
+      transform:none !important;
+    }
+    .navlinks > a.nav-item.active,
+    .navlinks .has-dropdown > .nav-parent.active{
+      background:linear-gradient(90deg,rgba(242,183,5,.15),rgba(242,183,5,0) 82%) !important;
+      border-left-color:var(--gold) !important;
+      border-bottom-color:rgba(1,61,38,.08) !important;
+      color:var(--green-deep) !important;
+      box-shadow:none !important;
+      transform:none !important;
+    }
+    .navlinks .has-dropdown.open > .nav-parent{ font-weight:700 !important; }
+
+    /* Mục con: thụt nhẹ, đường dóng mảnh bên trái */
+    .navlinks .dropdown{
+      margin:0 !important;
+      padding:0 !important;
+      background:transparent !important;
+      border:0 !important;
+      border-radius:0 !important;
+      box-shadow:none !important;
+    }
+    .navlinks .has-dropdown.open > .dropdown{
+      display:flex !important;
+      flex-direction:column !important;
+      margin:0 0 6px 15px !important;
+      padding:2px 0 0 !important;
+      border-left:1px solid rgba(1,61,38,.14) !important;
+    }
+    .navlinks .dropdown a{
+      margin:0 !important;
+      padding:11px 10px 11px 14px !important;
+      width:100% !important;
+      background:transparent !important;
+      border:0 !important;
+      border-left:2px solid transparent !important;
+      border-radius:0 !important;
+      box-shadow:none !important;
+      transform:none !important;
+      justify-content:flex-start !important;
+      font-size:.88rem !important;
+      font-weight:600 !important;
+      letter-spacing:.005em !important;
+      color:rgba(1,61,38,.68) !important;
+    }
+    .navlinks .dropdown a + a{ border-top:1px solid rgba(1,61,38,.05) !important; }
+    .navlinks .dropdown a:hover{
+      background:transparent !important;
+      border-left-color:rgba(242,183,5,.55) !important;
+      color:var(--green-deep) !important;
+    }
+    .navlinks .dropdown a.active{
+      background:transparent !important;
+      border-left-color:var(--gold) !important;
+      color:var(--green-deep) !important;
+      font-weight:700 !important;
+    }
+    .navlinks .dropdown a::before{ display:none !important; content:none !important; }
+
+    /* Mũi tên mục lớn: nhỏ, vàng, xoay khi mở */
+    .navlinks .has-dropdown > .nav-parent .caret{
+      margin-left:auto !important;
+      color:var(--gold) !important;
+      font-size:.9rem !important;
+      line-height:1 !important;
+      transition:transform .25s var(--ease) !important;
+    }
+    .navlinks .has-dropdown.open > .nav-parent .caret{ transform:rotate(180deg) !important; }
+
+    /* Link website Học viện: dồn xuống cuối, nhỏ và nhẹ */
+    .navlinks > a.nav-item[href*="hvtc.edu.vn"]{
+      order:99;
+      margin-top:auto !important;
+      min-height:0 !important;
+      padding:16px 12px 4px 14px !important;
+      background:transparent !important;
+      border:0 !important;
+      border-top:1px solid rgba(1,61,38,.08) !important;
+      border-left:0 !important;
+      border-radius:0 !important;
+      box-shadow:none !important;
+      font-size:.72rem !important;
+      font-weight:700 !important;
+      letter-spacing:.16em !important;
+      text-transform:uppercase;
+      color:rgba(1,61,38,.45) !important;
+    }
+    .navlinks > a.nav-item[href*="hvtc.edu.vn"]::after{
+      content:"\2197";
+      margin-left:6px;
+      font-size:.95em;
+      letter-spacing:0;
+      text-transform:none;
+      color:var(--gold);
+    }
+    .navlinks > a.nav-item[href*="hvtc.edu.vn"]:hover{ color:var(--green-deep) !important; }
+
+    /* Burger thành dấu X khi menu mở */
+    .navlinks.open ~ .nav-cta .burger{
+      background:var(--green-darkest) !important;
+      border-color:var(--green-darkest) !important;
+    }
+    .navlinks.open ~ .nav-cta .burger span{ background:transparent !important; }
+    .navlinks.open ~ .nav-cta .burger span::before{
+      top:0 !important;
+      background:#fff;
+      transform:rotate(45deg);
+    }
+    .navlinks.open ~ .nav-cta .burger span::after{
+      top:0 !important;
+      background:#fff;
+      transform:rotate(-45deg);
+    }
+  }
