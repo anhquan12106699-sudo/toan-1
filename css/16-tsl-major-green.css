@@ -1,0 +1,37 @@
+/* ============================================================
+   HAI THẺ CHUYÊN NGÀNH (trang Tuyển sinh)
+   Đổi sang tông xanh giống thẻ chuyên ngành ở trang chủ.
+   ============================================================ */
+#tuyen-sinh .tsl-major{
+  isolation:isolate;
+  color:#fff;
+  border-color:transparent;
+  background:radial-gradient(110% 120% at 100% 0%,rgba(242,183,5,.2),transparent 56%),linear-gradient(155deg,#015B34 0%,#013D26 62%,#012418 100%);
+  box-shadow:0 26px 50px -34px rgba(1,37,26,.8);
+}
+#tuyen-sinh .tsl-major:nth-child(2){
+  background:radial-gradient(110% 120% at 0% 0%,rgba(69,201,122,.22),transparent 56%),linear-gradient(155deg,#013D26 0%,#012C1C 100%);
+}
+/* bỏ vạch vàng bên trái kiểu thẻ trắng cũ */
+#tuyen-sinh .tsl-major::before{display:none;}
+#tuyen-sinh .tsl-major:hover{transform:translateY(-6px);border-color:transparent;box-shadow:0 34px 60px -34px rgba(1,37,26,.9);}
+
+/* số 01 / 02 thành chữ mờ cỡ lớn ở góc phải như thẻ trang chủ */
+#tuyen-sinh .tsl-major-num{
+  position:absolute;right:26px;top:10px;z-index:-1;margin:0;pointer-events:none;
+  font-family:var(--font-cond);font-weight:900;font-size:7rem;line-height:.9;letter-spacing:0;
+  color:transparent;-webkit-text-stroke:1.5px rgba(255,255,255,.12);
+}
+
+#tuyen-sinh .tsl-major h3{position:relative;max-width:18ch;color:#fff;}
+#tuyen-sinh .tsl-major p{position:relative;color:rgba(255,255,255,.82);}
+
+/* liên kết "Xem chương trình": vàng + nút tròn vàng */
+#tuyen-sinh .tsl-major-link{color:var(--gold);}
+#tuyen-sinh .tsl-major-link svg{background:rgba(242,183,5,.16);color:var(--gold);}
+#tuyen-sinh .tsl-major:hover .tsl-major-link{color:var(--gold);}
+#tuyen-sinh .tsl-major:hover .tsl-major-link svg{background:var(--gold);color:var(--green-darkest);transform:translateX(4px);}
+
+@media (max-width:560px){
+  #tuyen-sinh .tsl-major-num{font-size:5rem;right:18px;top:8px;}
+}
